@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: mensageria-hotelaria
+  
+  # Configuração do Neon PostgreSQL
+  datasource:
+    url: jdbc:postgresql://ep-broad-mud-aduyctd5-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require
+    username: neondb_owner
+    password: npg_dgpW1SUsNv6O
+    driver-class-name: org.postgresql.Driver
+    
+    # Pool de conexões HikariCP
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 300000
+      connection-timeout: 20000
+      leak-detection-threshold: 60000
+  
+  # Configuração JPA/Hibernate para PostgreSQL
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update  # Em produção use 'validate' ou 'none'
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        temp:
+          use_jdbc_metadata_defaults: false
+
+# Server
+server:
+  port: ${PORT:8080}
+
+# Google Cloud Pub/Sub
+google:
+  cloud:
+    project-id: ${GOOGLE_CLOUD_PROJECT:serjava-demo}
+    pubsub:
+      topic: ${PUBSUB_TOPIC:grupo-e}
+      subscription: ${PUBSUB_SUBSCRIPTION:grupo-e-sub}
+      credentials-path: ${GOOGLE_APPLICATION_CREDENTIALS:./serjava-demo-a4fb281d3c36.json}
+
+# Logging
+logging:
+  level:
+    com.faculdade: INFO
+    org.springframework.web: WARN
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE

@@ -1,0 +1,16 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "terminal.integrated.env.osx": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "/Users/viniciusbaldochi1/mensageria/serjava-demo-a4fb281d3c36.json",
+        "GOOGLE_CLOUD_PROJECT": "serjava-demo"
+    },
+    "terminal.integrated.env.linux": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "/Users/viniciusbaldochi1/mensageria/serjava-demo-a4fb281d3c36.json",
+        "GOOGLE_CLOUD_PROJECT": "serjava-demo"
+    },
+    "terminal.integrated.env.windows": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "/Users/viniciusbaldochi1/mensageria/serjava-demo-a4fb281d3c36.json",
+        "GOOGLE_CLOUD_PROJECT": "serjava-demo"
+    }
+}

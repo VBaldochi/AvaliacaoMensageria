@@ -1,0 +1,53 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "MensageriaHotelariaApplication",
+            "request": "launch",
+            "mainClass": "com.faculdade.pubsub.MensageriaHotelariaApplication",
+            "projectName": "pubsub-consumer"
+        },
+        {
+            "type": "java",
+            "name": "PubSubConsumer",
+            "request": "launch",
+            "mainClass": "com.faculdade.pubsub.PubSubConsumer",
+            "projectName": "pubsub-consumer"
+        },
+        {
+            "name": "Run Consumer (Maven)",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/apache-maven-3.9.4/bin/mvn",
+            "args": [
+                "exec:java",
+                "-Dexec.mainClass=com.faculdade.pubsub.PubSubConsumer"
+            ],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "GOOGLE_APPLICATION_CREDENTIALS": "/Users/viniciusbaldochi1/mensageria/serjava-demo-a4fb281d3c36.json",
+                "GOOGLE_CLOUD_PROJECT": "serjava-demo"
+            },
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "name": "Run Publisher (Maven)",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/apache-maven-3.9.4/bin/mvn",
+            "args": [
+                "exec:java",
+                "-Dexec.mainClass=com.faculdade.pubsub.PubSubPublisher"
+            ],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "GOOGLE_APPLICATION_CREDENTIALS": "/Users/viniciusbaldochi1/mensageria/serjava-demo-a4fb281d3c36.json",
+                "GOOGLE_CLOUD_PROJECT": "serjava-demo"
+            },
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        }
+    ]
+}

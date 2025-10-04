@@ -1,0 +1,94 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "maven-compile",
+            "type": "shell",
+            "command": "./apache-maven-3.9.4/bin/mvn",
+            "args": ["clean", "compile"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "run-consumer",
+            "type": "shell",
+            "command": "./apache-maven-3.9.4/bin/mvn",
+            "args": ["exec:java", "-Dexec.mainClass=com.faculdade.pubsub.PubSubConsumer"],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "GOOGLE_APPLICATION_CREDENTIALS": "/Users/viniciusbaldochi1/mensageria/serjava-demo-a4fb281d3c36.json",
+                    "GOOGLE_CLOUD_PROJECT": "serjava-demo"
+                }
+            },
+            "dependsOn": "maven-compile",
+            "problemMatcher": []
+        },
+        {
+            "label": "run-publisher",
+            "type": "shell",
+            "command": "./apache-maven-3.9.4/bin/mvn",
+            "args": ["exec:java", "-Dexec.mainClass=com.faculdade.pubsub.PubSubPublisher"],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "GOOGLE_APPLICATION_CREDENTIALS": "/Users/viniciusbaldochi1/mensageria/serjava-demo-a4fb281d3c36.json",
+                    "GOOGLE_CLOUD_PROJECT": "serjava-demo"
+                }
+            },
+            "dependsOn": "maven-compile",
+            "problemMatcher": []
+        },
+        {
+            "label": "run-with-java",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp", 
+                "$(find ~/.m2/repository -name '*.jar' | tr '\\n' ':')target/classes",
+                "com.faculdade.pubsub.PubSubConsumer"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "GOOGLE_APPLICATION_CREDENTIALS": "/Users/viniciusbaldochi1/mensageria/serjava-demo-a4fb281d3c36.json",
+                    "GOOGLE_CLOUD_PROJECT": "serjava-demo"
+                }
+            },
+            "dependsOn": "maven-compile",
+            "problemMatcher": []
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+/.env
+/docs
+# Google service account credentials (should not be committed)
+serjava-demo-a4fb281d3c36.json
+src/main/resources/serjava-demo-a4fb281d3c36.json
+target/classes/serjava-demo-a4fb281d3c36.json
+
+# Maven target
+target/
